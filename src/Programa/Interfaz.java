@@ -22,6 +22,7 @@ public class Interfaz extends JFrame implements ActionListener {
     private JLabel warning;
     private JLabel warning2;
     private JLabel warning3;
+    private JLabel warning4;
     
     private JTextField input;
     private JTextField input2;
@@ -100,7 +101,7 @@ public class Interfaz extends JFrame implements ActionListener {
         
         add(warning);
         
-        warning2 = new JLabel("Supera el tamaño de la matriz...");
+        warning2 = new JLabel("El indice supera el tamaño de la lista...");
         warning2.setBounds(40,120,600,30);
         warning2.setFont(new Font("Verdana", Font.BOLD, 18));
         warning2.setForeground(Color.red);
@@ -115,6 +116,14 @@ public class Interfaz extends JFrame implements ActionListener {
         warning3.setVisible(false);
         
         add(warning3);
+        
+        warning4 = new JLabel("El indice supera el tamaño de la lista...");
+        warning4.setBounds(40,250,600,30);
+        warning4.setFont(new Font("Verdana", Font.BOLD, 18));
+        warning4.setForeground(Color.red);
+        warning4.setVisible(false);
+        
+        add(warning4);
         
 
         agregar = new JButton("Agregar");
@@ -280,7 +289,10 @@ public class Interfaz extends JFrame implements ActionListener {
                 }
         
                 if(e.getSource() == posicion){
-                    String text2 = input2.getText();
+                    if(Integer.valueOf(input2.getText())>list.getSize()-1){
+                    warning4.setVisible(true);
+                    }else{
+                        String text2 = input2.getText();
                     int n = Integer.parseInt(text2);
                     limpiar.setEnabled(true);
                     iniciar.setEnabled(false);
@@ -293,6 +305,8 @@ public class Interfaz extends JFrame implements ActionListener {
 
                     // FALTA AGREGAR AQUI LA LECTURA DE LA POSICION NADA MAS
                     input3.setText(String.valueOf(list.obtenerValor(n)));
+                    }
+                    
                 }
 
             if(e.getSource() == iniciar){
