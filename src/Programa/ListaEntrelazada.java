@@ -5,7 +5,7 @@
  */
 package Programa;
 
-public class ListaEntrelazada {
+public class ListaEntrelazada implements Cloneable {
     Nodo cabeza;
     int size;
 
@@ -91,6 +91,7 @@ public class ListaEntrelazada {
     }
     
     public void ordenarDescendente(ListaEntrelazada lista){
+        
         for (int i = 0; i < lista.getSize(); i++) {
             for (int j = 0; j < lista.getSize()-1; j++) {
                 if(lista.obtenerValor(j) < lista.obtenerValor(j+1)){
