@@ -23,6 +23,7 @@ public class Interfaz extends JFrame implements ActionListener {
     private JLabel warning2;
     private JLabel warning3;
     private JLabel warning4;
+    private JLabel warning5;
     
     private JTextField input;
     private JTextField input2;
@@ -125,6 +126,14 @@ public class Interfaz extends JFrame implements ActionListener {
         
         add(warning4);
         
+        warning5 = new JLabel("Por favor solo ingrese caracteres numericos...");
+        warning5.setBounds(40,250,600,30);
+        warning5.setFont(new Font("Verdana", Font.BOLD, 18));
+        warning5.setForeground(Color.red);
+        warning5.setVisible(false);
+        
+        add(warning5);
+        
 
         agregar = new JButton("Agregar");
         agregar.setBounds(105,85,150,40);
@@ -208,9 +217,11 @@ public class Interfaz extends JFrame implements ActionListener {
             if(e.getSource() == agregar){
                 if(!(isNumeric(input.getText()))){
                 warning.setVisible(true);
+                warning2.setVisible(false);
                 warning3.setVisible(false);
                 }else if(list.listaValores(list).contains(Integer.valueOf(input.getText()))){
                     warning.setVisible(false);
+                    warning2.setVisible(false);
                     warning3.setVisible(true);
                 }else{
                     String text1 = input.getText();
@@ -218,6 +229,7 @@ public class Interfaz extends JFrame implements ActionListener {
                     
                     warning.setVisible(false);
                     warning3.setVisible(false);
+                    warning2.setVisible(false);
                     
                     limpiar.setEnabled(true);
                     iniciar.setEnabled(true);
@@ -241,11 +253,13 @@ public class Interfaz extends JFrame implements ActionListener {
                     if(!(isNumeric(input.getText()))){
                     warning.setVisible(true);
                     warning3.setVisible(false);
+                    warning2.setVisible(false);
                     }else{
                         String text1 = input.getText();
                         int m = Integer.parseInt(text1);
                         
                         if (m>list.getSize()-1){
+                            warning.setVisible(false);
                             warning2.setVisible(true);
                             warning3.setVisible(false);
                         }else{
@@ -289,9 +303,16 @@ public class Interfaz extends JFrame implements ActionListener {
                 }
         
                 if(e.getSource() == posicion){
-                    if(Integer.valueOf(input2.getText())>list.getSize()-1){
+                    if(!(isNumeric(input.getText()))){
+                        warning4.setVisible(false);
+                        warning5.setVisible(true);
+                    }else if(Integer.valueOf(input2.getText())>list.getSize()-1){
                     warning4.setVisible(true);
-                    }else{
+                    warning5.setVisible(false);
+                    }
+                    else{
+                        warning4.setVisible(false);
+                        warning5.setVisible(false);
                         String text2 = input2.getText();
                     int n = Integer.parseInt(text2);
                     limpiar.setEnabled(true);
@@ -310,6 +331,11 @@ public class Interfaz extends JFrame implements ActionListener {
                 }
 
             if(e.getSource() == iniciar){
+                warning.setVisible(false);
+                warning2.setVisible(false);
+                warning3.setVisible(false);
+                warning4.setVisible(false);
+                warning5.setVisible(false);
                 limpiar.setEnabled(true);
                 iniciar.setEnabled(false);
                 eliminar.setEnabled(false);
@@ -325,6 +351,11 @@ public class Interfaz extends JFrame implements ActionListener {
             }
         
         if(e.getSource() == limpiar){
+            warning.setVisible(false);
+            warning2.setVisible(false);
+            warning3.setVisible(false);
+            warning4.setVisible(false);
+            warning5.setVisible(false);
             limpiar.setEnabled(false);
             iniciar.setEnabled(false);
             eliminar.setEnabled(false);
