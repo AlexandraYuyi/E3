@@ -21,6 +21,7 @@ public class Interfaz extends JFrame implements ActionListener {
     private JLabel enunciado2;
     private JLabel warning;
     private JLabel warning2;
+    private JLabel warning3;
     
     private JTextField input;
     private JTextField input2;
@@ -107,6 +108,14 @@ public class Interfaz extends JFrame implements ActionListener {
         
         add(warning2);
         
+        warning3 = new JLabel("El numero ingresado ya esta en la lista...");
+        warning3.setBounds(40,120,600,30);
+        warning3.setFont(new Font("Verdana", Font.BOLD, 18));
+        warning3.setForeground(Color.red);
+        warning3.setVisible(false);
+        
+        add(warning3);
+        
 
         agregar = new JButton("Agregar");
         agregar.setBounds(105,85,150,40);
@@ -190,11 +199,16 @@ public class Interfaz extends JFrame implements ActionListener {
             if(e.getSource() == agregar){
                 if(!(isNumeric(input.getText()))){
                 warning.setVisible(true);
+                warning3.setVisible(false);
+                }else if(list.listaValores(list).contains(Integer.valueOf(input.getText()))){
+                    warning.setVisible(false);
+                    warning3.setVisible(true);
                 }else{
                     String text1 = input.getText();
                     int m = Integer.parseInt(text1);
                     
                     warning.setVisible(false);
+                    warning3.setVisible(false);
                     
                     limpiar.setEnabled(true);
                     iniciar.setEnabled(true);
@@ -217,17 +231,20 @@ public class Interfaz extends JFrame implements ActionListener {
                 if(e.getSource() == eliminar){
                     if(!(isNumeric(input.getText()))){
                     warning.setVisible(true);
+                    warning3.setVisible(false);
                     }else{
                         String text1 = input.getText();
                         int m = Integer.parseInt(text1);
                         
                         if (m>list.getSize()-1){
                             warning2.setVisible(true);
+                            warning3.setVisible(false);
                         }else{
 
                             if(list.getSize()-1 == 0){
                                 warning.setVisible(false);
                                 warning2.setVisible(false);
+                                warning3.setVisible(false);
                                 
                                 limpiar.setEnabled(true);
                                 iniciar.setEnabled(true);
@@ -242,6 +259,7 @@ public class Interfaz extends JFrame implements ActionListener {
                             } else{ 
                             warning.setVisible(false);
                             warning2.setVisible(false);
+                            warning3.setVisible(false);
                             
                             limpiar.setEnabled(true);
                             iniciar.setEnabled(true);
