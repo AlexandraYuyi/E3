@@ -116,22 +116,4 @@ public class ListaEntrelazada {
         }
     }
     
-    public static void main(String[] args) {
-        ListaEntrelazada list = new ListaEntrelazada();
-        list.enlazar(3);
-        list.enlazar(1);
-        list.enlazar(5);
-        list.enlazar(0);
-        list.enlazar(4);
-        System.out.println(list.mostrarLista(list));
-        
-        list.ordenarAscendente(list);
-        System.out.println(list.mostrarLista(list));
-        System.out.println("");
-        
-        list.ordenarDescendente(list);
-        System.out.println(list.mostrarLista(list));
-        
-    }
-    
 }
