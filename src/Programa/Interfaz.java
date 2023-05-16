@@ -20,6 +20,7 @@ public class Interfaz extends JFrame implements ActionListener {
     private JLabel enunciado;
     private JLabel enunciado2;
     private JLabel warning;
+    private JLabel warning2;
     
     private JTextField input;
     private JTextField input2;
@@ -98,6 +99,15 @@ public class Interfaz extends JFrame implements ActionListener {
         
         add(warning);
         
+        warning2 = new JLabel("Supera el tamaño de la matriz...");
+        warning2.setBounds(40,120,600,30);
+        warning2.setFont(new Font("Verdana", Font.BOLD, 18));
+        warning2.setForeground(Color.red);
+        warning2.setVisible(false);
+        
+        add(warning2);
+        
+
         agregar = new JButton("Agregar");
         agregar.setBounds(105,85,150,40);
         agregar.setFont(new Font("Verdana", Font.BOLD, 18));
@@ -211,19 +221,40 @@ public class Interfaz extends JFrame implements ActionListener {
                         String text1 = input.getText();
                         int m = Integer.parseInt(text1);
                         
-                        warning.setVisible(false);
-                        
-                        limpiar.setEnabled(true);
-                        iniciar.setEnabled(true);
-                        eliminar.setEnabled(true);
-                        agregar.setEnabled(true);
-                        posicion.setEnabled(false);
-                        input.setEditable(true);
-                        input.setText(null);
-                        list.eliminar(m);
+                        if (m>list.getSize()-1){
+                            warning2.setVisible(true);
+                        }else{
 
-                        resultadoLista.setText(list.mostrarLista(list));
-                      
+                            if(list.getSize()-1 == 0){
+                                warning.setVisible(false);
+                                warning2.setVisible(false);
+                                
+                                limpiar.setEnabled(true);
+                                iniciar.setEnabled(true);
+                                eliminar.setEnabled(true);
+                                agregar.setEnabled(true);
+                                posicion.setEnabled(false);
+                                input.setEditable(true);
+                                input.setText(null);
+                                resultadoLista.setText("");
+                                list = new ListaEntrelazada();
+
+                            } else{ 
+                            warning.setVisible(false);
+                            warning2.setVisible(false);
+                            
+                            limpiar.setEnabled(true);
+                            iniciar.setEnabled(true);
+                            eliminar.setEnabled(true);
+                            agregar.setEnabled(true);
+                            posicion.setEnabled(false);
+                            input.setEditable(true);
+                            input.setText(null);
+                            list.eliminar(m);
+
+                            resultadoLista.setText(list.mostrarLista(list));
+                            }
+                        }
                         }
                     }
                 } catch(NumberFormatException err){
@@ -243,7 +274,7 @@ public class Interfaz extends JFrame implements ActionListener {
                     input.setText(null);
 
                     // FALTA AGREGAR AQUI LA LECTURA DE LA POSICION NADA MAS
-                    /*input3.setText(list.obtenerNodo(n));*/
+                    input3.setText(String.valueOf(list.obtenerValor(n)));
                 }
 
             if(e.getSource() == iniciar){
