@@ -301,32 +301,64 @@ public class Interfaz extends JFrame implements ActionListener {
                 } catch(NumberFormatException err){
             
                 }
-        
+        //Esta validacion es la unica que no funciona, los numeros los toma como no numeros
                 if(e.getSource() == posicion){
-                    if(!(isNumeric(input.getText()))){
+                    
+                    
+                    if(isNumeric(input2.getText())){
+                        String text2 = input2.getText();
+                        int n = Integer.parseInt(text2);
+                        if(n>list.getSize()-1){
+                            warning4.setVisible(true);
+                            warning5.setVisible(false);
+                            input3.setText(null);
+                        }else{
+                            warning4.setVisible(false);
+                            warning5.setVisible(false);
+                        
+                            limpiar.setEnabled(true);
+                            iniciar.setEnabled(false);
+                            eliminar.setEnabled(false);
+                            agregar.setEnabled(false);
+                            posicion.setEnabled(true);
+                            input.setEditable(false);
+                            input2.setEditable(true);
+                            input.setText(null);
+                            input3.setText(String.valueOf(list.obtenerValor(n)));
+                        }
+                    }else{
                         warning4.setVisible(false);
                         warning5.setVisible(true);
-                    }else if(Integer.valueOf(input2.getText())>list.getSize()-1){
-                    warning4.setVisible(true);
-                    warning5.setVisible(false);
+                        input3.setText(null);
                     }
-                    else{
-                        warning4.setVisible(false);
-                        warning5.setVisible(false);
-                        String text2 = input2.getText();
-                    int n = Integer.parseInt(text2);
-                    limpiar.setEnabled(true);
-                    iniciar.setEnabled(false);
-                    eliminar.setEnabled(false);
-                    agregar.setEnabled(false);
-                    posicion.setEnabled(true);
-                    input.setEditable(false);
-                    input2.setEditable(true);
-                    input.setText(null);
-
-                    // FALTA AGREGAR AQUI LA LECTURA DE LA POSICION NADA MAS
-                    input3.setText(String.valueOf(list.obtenerValor(n)));
-                    }
+                    
+                    
+//                    if(!(isNumeric(input.getText()))){
+//                        warning4.setVisible(false);
+//                        warning5.setVisible(true);
+//                        input3.setText(null);
+//                    }else if(Integer.valueOf(input2.getText())>list.getSize()-1){
+//                    warning4.setVisible(true);
+//                    warning5.setVisible(false);
+//                    input3.setText(null);
+//                    }
+//                    else{
+//                        warning4.setVisible(false);
+//                        warning5.setVisible(false);
+//                        String text2 = input2.getText();
+//                        int n = Integer.parseInt(text2);
+//                        limpiar.setEnabled(true);
+//                        iniciar.setEnabled(false);
+//                        eliminar.setEnabled(false);
+//                        agregar.setEnabled(false);
+//                        posicion.setEnabled(true);
+//                        input.setEditable(false);
+//                        input2.setEditable(true);
+//                        input.setText(null);
+//
+//                    // FALTA AGREGAR AQUI LA LECTURA DE LA POSICION NADA MAS
+//                        input3.setText(String.valueOf(list.obtenerValor(n)));
+//                    }
                     
                 }
 
