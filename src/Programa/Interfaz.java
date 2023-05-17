@@ -29,9 +29,11 @@ public class Interfaz extends JFrame implements ActionListener {
     private JTextField input2;
     private JTextField input3;
     private JButton agregar;
-    private JButton iniciar;
+//    private JButton iniciar;
     private JButton limpiar;
     private JButton eliminar;
+    private JButton ascendente;
+    private JButton descendente;
 
     private JButton posicion;
 
@@ -39,13 +41,13 @@ public class Interfaz extends JFrame implements ActionListener {
     private JTextArea resultadoLista;
     private JScrollPane scroll1;
 
-    private JLabel menorMayor;
-    private JTextArea resultadoMenorMayor;
-    private JScrollPane scroll2;
+    private JLabel ordenar;
+//    private JTextArea resultadoMenorMayor;
+//    private JScrollPane scroll2;
 
-    private JLabel mayorMenor;
-    private JTextArea resultadoMayorMenor;
-    private JScrollPane scroll3; 
+//    private JLabel mayorMenor;
+//    private JTextArea resultadoMayorMenor;
+//    private JScrollPane scroll3; 
     
     public Interfaz(){
         setLayout(null);
@@ -148,15 +150,15 @@ public class Interfaz extends JFrame implements ActionListener {
         add(eliminar);
         eliminar.addActionListener(this);
 
-        iniciar = new JButton("Iniciar");
-        iniciar.setBounds(760,85,150,40);
-        iniciar.setFont(new Font("Verdana", Font.BOLD, 18));
-        iniciar.setEnabled(false);
-        add(iniciar);
-        iniciar.addActionListener(this);
+//        iniciar = new JButton("Iniciar");
+//        iniciar.setBounds(760,85,150,40);
+//        iniciar.setFont(new Font("Verdana", Font.BOLD, 18));
+//        iniciar.setEnabled(false);
+//        add(iniciar);
+//        iniciar.addActionListener(this);
         
         limpiar = new JButton("Limpiar");
-        limpiar.setBounds(920,85,150,40);
+        limpiar.setBounds(40,420,150,40);
         limpiar.setFont(new Font("Verdana", Font.BOLD, 18));
         limpiar.setEnabled(false);
         add(limpiar);
@@ -183,31 +185,45 @@ public class Interfaz extends JFrame implements ActionListener {
         scroll1.setBounds(40,320,1032,60);
         add(scroll1);
 
-        menorMayor = new JLabel("Menor a Mayor:");
-        menorMayor.setBounds(40,405,480,30);
-        menorMayor.setFont(new Font("Verdana", Font.BOLD, 20));
-        add(menorMayor);
+        ordenar = new JLabel("Ordenar lista:");
+        ordenar.setBounds(700,164,480,30);
+        ordenar.setFont(new Font("Verdana", Font.BOLD, 24));
+        add(ordenar);
         
-        resultadoMenorMayor = new JTextArea();
-        resultadoMenorMayor.setFont(new Font("Verdana", Font.LAYOUT_LEFT_TO_RIGHT, 28));
-        resultadoMenorMayor.setEditable(false);
-        add(resultadoMenorMayor);
-        scroll2 = new JScrollPane(resultadoMenorMayor);
-        scroll2.setBounds(40,445,1032,60);
-        add(scroll2);
+        ascendente = new JButton("Ascendente");
+        ascendente.setBounds(700,210,170,40);
+        ascendente.setFont(new Font("Verdana", Font.BOLD, 18));
+        ascendente.setEnabled(false);
+        add(ascendente);
+        ascendente.addActionListener(this);
+        
+        descendente = new JButton("Descendente");
+        descendente.setBounds(900,210,170,41);
+        descendente.setFont(new Font("Verdana", Font.BOLD, 18));
+        descendente.setEnabled(false);
+        add(descendente);
+        descendente.addActionListener(this);
+        
+//        resultadoMenorMayor = new JTextArea();
+//        resultadoMenorMayor.setFont(new Font("Verdana", Font.LAYOUT_LEFT_TO_RIGHT, 28));
+//        resultadoMenorMayor.setEditable(false);
+//        add(resultadoMenorMayor);
+//        scroll2 = new JScrollPane(resultadoMenorMayor);
+//        scroll2.setBounds(40,445,1032,60);
+//        add(scroll2);
               
-        mayorMenor = new JLabel("Mayor a Menor:");
-        mayorMenor.setBounds(40,530,480,30);
-        mayorMenor.setFont(new Font("Verdana", Font.BOLD, 20));
-        add(mayorMenor);
+//        mayorMenor = new JLabel("Mayor a Menor:");
+//        mayorMenor.setBounds(40,530,480,30);
+//        mayorMenor.setFont(new Font("Verdana", Font.BOLD, 20));
+//        add(mayorMenor);
         
-        resultadoMayorMenor = new JTextArea();
-        resultadoMayorMenor.setFont(new Font("Verdana", Font.LAYOUT_LEFT_TO_RIGHT, 28));
-        resultadoMayorMenor.setEditable(false);
-        add(resultadoMayorMenor);
-        scroll3 = new JScrollPane(resultadoMayorMenor);
-        scroll3.setBounds(40,570,1032,60);
-        add(scroll3);
+//        resultadoMayorMenor = new JTextArea();
+//        resultadoMayorMenor.setFont(new Font("Verdana", Font.LAYOUT_LEFT_TO_RIGHT, 28));
+//        resultadoMayorMenor.setEditable(false);
+//        add(resultadoMayorMenor);
+//        scroll3 = new JScrollPane(resultadoMayorMenor);
+//        scroll3.setBounds(40,570,1032,60);
+//        add(scroll3);
           
     }
     
@@ -232,10 +248,13 @@ public class Interfaz extends JFrame implements ActionListener {
                     warning2.setVisible(false);
                     
                     limpiar.setEnabled(true);
-                    iniciar.setEnabled(true);
+//                    iniciar.setEnabled(true);
                     eliminar.setEnabled(true);
                     agregar.setEnabled(true);
-                    posicion.setEnabled(false);
+                    posicion.setEnabled(true);
+                    ascendente.setEnabled(true);
+                    descendente.setEnabled(true);
+                    input2.setEditable(true);
                     input.setEditable(true);
                     input.setText(null);
                     list.enlazar(m);
@@ -270,10 +289,10 @@ public class Interfaz extends JFrame implements ActionListener {
                                 warning3.setVisible(false);
                                 
                                 limpiar.setEnabled(true);
-                                iniciar.setEnabled(true);
+//                                iniciar.setEnabled(true);
                                 eliminar.setEnabled(true);
                                 agregar.setEnabled(true);
-                                posicion.setEnabled(false);
+                                posicion.setEnabled(true);
                                 input.setEditable(true);
                                 input.setText(null);
                                 resultadoLista.setText("");
@@ -285,10 +304,10 @@ public class Interfaz extends JFrame implements ActionListener {
                             warning3.setVisible(false);
                             
                             limpiar.setEnabled(true);
-                            iniciar.setEnabled(true);
+//                            iniciar.setEnabled(true);
                             eliminar.setEnabled(true);
                             agregar.setEnabled(true);
-                            posicion.setEnabled(false);
+                            posicion.setEnabled(true);
                             input.setEditable(true);
                             input.setText(null);
                             list.eliminar(m);
@@ -317,11 +336,11 @@ public class Interfaz extends JFrame implements ActionListener {
                             warning5.setVisible(false);
                         
                             limpiar.setEnabled(true);
-                            iniciar.setEnabled(false);
-                            eliminar.setEnabled(false);
-                            agregar.setEnabled(false);
+//                            iniciar.setEnabled(false);
+//                            eliminar.setEnabled(false);
+//                            agregar.setEnabled(false);
                             posicion.setEnabled(true);
-                            input.setEditable(false);
+//                            input.setEditable(false);
                             input2.setEditable(true);
                             input.setText(null);
                             input3.setText(String.valueOf(list.obtenerValor(n)));
@@ -332,55 +351,37 @@ public class Interfaz extends JFrame implements ActionListener {
                         input3.setText(null);
                     }
                     
-                    
-//                    if(!(isNumeric(input.getText()))){
-//                        warning4.setVisible(false);
-//                        warning5.setVisible(true);
-//                        input3.setText(null);
-//                    }else if(Integer.valueOf(input2.getText())>list.getSize()-1){
-//                    warning4.setVisible(true);
-//                    warning5.setVisible(false);
-//                    input3.setText(null);
-//                    }
-//                    else{
-//                        warning4.setVisible(false);
-//                        warning5.setVisible(false);
-//                        String text2 = input2.getText();
-//                        int n = Integer.parseInt(text2);
-//                        limpiar.setEnabled(true);
-//                        iniciar.setEnabled(false);
-//                        eliminar.setEnabled(false);
-//                        agregar.setEnabled(false);
-//                        posicion.setEnabled(true);
-//                        input.setEditable(false);
-//                        input2.setEditable(true);
-//                        input.setText(null);
-//
-//                    // FALTA AGREGAR AQUI LA LECTURA DE LA POSICION NADA MAS
-//                        input3.setText(String.valueOf(list.obtenerValor(n)));
-//                    }
-                    
                 }
 
-            if(e.getSource() == iniciar){
-                warning.setVisible(false);
-                warning2.setVisible(false);
-                warning3.setVisible(false);
-                warning4.setVisible(false);
-                warning5.setVisible(false);
-                limpiar.setEnabled(true);
-                iniciar.setEnabled(false);
-                eliminar.setEnabled(false);
-                agregar.setEnabled(false);
-                posicion.setEnabled(true);
-                input.setEditable(false);
-                input2.setEditable(true);
+//            if(e.getSource() == iniciar){
+//                warning.setVisible(false);
+//                warning2.setVisible(false);
+//                warning3.setVisible(false);
+//                warning4.setVisible(false);
+//                warning5.setVisible(false);
+//                limpiar.setEnabled(true);
+//                iniciar.setEnabled(false);
+//                eliminar.setEnabled(false);
+//                agregar.setEnabled(false);
+//                posicion.setEnabled(true);
+//                input.setEditable(false);
+//                input2.setEditable(true);
+//
+//                list.ordenarAscendente(list);
+//                resultadoMenorMayor.setText(list.mostrarLista(list));
+//                list.ordenarDescendente(list);
+//                resultadoMayorMenor.setText(list.mostrarLista(list));
+//            }
 
-                list.ordenarAscendente(list);
-                resultadoMenorMayor.setText(list.mostrarLista(list));
-                list.ordenarDescendente(list);
-                resultadoMayorMenor.setText(list.mostrarLista(list));
-            }
+        if(e.getSource() == ascendente){
+            list.ordenarAscendente(list);
+            resultadoLista.setText(list.mostrarLista(list));
+        }
+        
+        if(e.getSource() == descendente){
+            list.ordenarDescendente(list);
+            resultadoLista.setText(list.mostrarLista(list));
+        }
         
         if(e.getSource() == limpiar){
             warning.setVisible(false);
@@ -389,25 +390,27 @@ public class Interfaz extends JFrame implements ActionListener {
             warning4.setVisible(false);
             warning5.setVisible(false);
             limpiar.setEnabled(false);
-            iniciar.setEnabled(false);
+//            iniciar.setEnabled(false);
             eliminar.setEnabled(false);
             agregar.setEnabled(true);
             posicion.setEnabled(false);
+            ascendente.setEnabled(false);
+            descendente.setEnabled(false);
             input.setEditable(true);
             input.setText(null);
             input2.setEditable(false);
             input2.setText(null);
             input3.setText(null);
             resultadoLista.setText("");
-            resultadoMayorMenor.setText("");
-            resultadoMenorMayor.setText("");
+//            resultadoMayorMenor.setText("");
+//            resultadoMenorMayor.setText("");
             list = new ListaEntrelazada();
         }
     }
     
     public static void main(String[] args) {
         Interfaz interfaz = new Interfaz();
-        interfaz.setBounds(0,0,1115,700);
+        interfaz.setBounds(0,0,1115,580);
         interfaz.setResizable(false);
         interfaz.setVisible(true);
         interfaz.setLocationRelativeTo(null);
