@@ -54,6 +54,15 @@ public class ListaEntrelazada implements Cloneable {
         return temp;
     }
     
+    public boolean verificarNum(ListaEntrelazada lista, int num){
+        for (int i = 0; i < lista.getSize(); i++) {
+                if(lista.obtenerValor(i) == num){
+                    return true;
+                }
+        }
+        return false;
+    }
+
     public void eliminar(int index){
         if (index==0){
             cabeza = cabeza.getSiguiente();

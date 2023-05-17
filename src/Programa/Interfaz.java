@@ -235,7 +235,7 @@ public class Interfaz extends JFrame implements ActionListener {
                 warning.setVisible(true);
                 warning2.setVisible(false);
                 warning3.setVisible(false);
-                }else if(list.listaValores(list).contains(Integer.valueOf(input.getText()))){
+                }else if(list.verificarNum(list, Integer.valueOf(input.getText()))){
                     warning.setVisible(false);
                     warning2.setVisible(false);
                     warning3.setVisible(true);
@@ -287,14 +287,20 @@ public class Interfaz extends JFrame implements ActionListener {
                                 warning.setVisible(false);
                                 warning2.setVisible(false);
                                 warning3.setVisible(false);
-                                
-                                limpiar.setEnabled(true);
-//                                iniciar.setEnabled(true);
-                                eliminar.setEnabled(true);
+                                warning4.setVisible(false);
+                                warning5.setVisible(false);
+                                limpiar.setEnabled(false);
+                    //            iniciar.setEnabled(false);
+                                eliminar.setEnabled(false);
                                 agregar.setEnabled(true);
-                                posicion.setEnabled(true);
+                                posicion.setEnabled(false);
+                                ascendente.setEnabled(false);
+                                descendente.setEnabled(false);
                                 input.setEditable(true);
                                 input.setText(null);
+                                input2.setEditable(false);
+                                input2.setText(null);
+                                input3.setText(null);
                                 resultadoLista.setText("");
                                 list = new ListaEntrelazada();
 
